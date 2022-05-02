@@ -1,0 +1,116 @@
+﻿
+
+{% extends 'myapp\index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Edit Member<small class="text-muted">Welcome to DigitalSociety</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                        <i class="zmdi zmdi-plus"></i>
+                </button>
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'view-member' %}"> Back</a></li>
+                            <li class="breadcrumb-item"> Members</li>
+                            <li class="breadcrumb-item active">Edit Member</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>Member</strong> Information </h2>
+                    <ul class="header-dropdown">
+                        <li class="remove">
+                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <form action="{% url 'm-update-profile' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" value="{{mid.name}}" placeholder="Full Name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="email" value="{{mid.email}}" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="contact_no" value="{{mid.contact_no}}" placeholder="Contact No">
+                                <input type="hidden" class="form-control" name="id" value="{{mid.id}}">
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="house_no" value="{{mid.house_no}}" placeholder="House No">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="full_address" value="{{mid.full_address}}" placeholder="Address">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="vehicle_type" value="{{mid.vehicle_type}}" placeholder="Vehicle Type">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="vehicle_details" value="{{mid.vehicle_details}}" placeholder="Vehicle Details">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="job_profession" value="{{mid.job_profession}}" placeholder="Job Profession">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="job_address" value="{{mid.job_address}}" placeholder="Job Address">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="file"  class="form-control"  name="pic" placeholder="Add Profile Image">
+                        </div>
+                    </div>
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                            <a type="submit" role="button" class="btn btn-default btn-round btn-simple" href="{% url 'view-member' %}">Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+            </div>
+        
+</section>
+{% endblock %}

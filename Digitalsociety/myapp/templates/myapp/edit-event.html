@@ -1,0 +1,93 @@
+﻿
+
+{% extends 'myapp\index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Edit Event<small class="text-muted">Welcome to DigitalSociety</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                        <i class="zmdi zmdi-plus"></i>
+                </button>
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                            <li class="breadcrumb-item"> Events</li>
+                            <li class="breadcrumb-item active">Edit Event</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>Event</strong> Information </h2>
+                    <ul class="header-dropdown">
+                        <li class="remove">
+                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <form action="{% url 'update-event' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            
+                            <div class="form-group">
+                                <h6>Event Title </h6>
+                                <input type="text" class="form-control" name="event_title" value="{{eid.event_title}}" placeholder="Event Title">
+                                <input type="hidden" class="form-control" name="id" value="{{eid.id}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h6>Event Picture</h6>
+                            <div class="form-group">
+                                <input id="image" class="form-control" type="file"  name="event_pic" value="{{eid.event_pic}}"  placeholder="Event pic">
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h6>Event Date </h6>
+                            <div class="form-group">
+                                <input type="date" class="form-control"  name="event_date" value="{{eid.event_date}}" placeholder="Event date">
+                                
+                             
+                            </div>
+                        </div>
+                       
+                        <div class="col-sm-12">
+                            <h6>Event Discription</h6>
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" rows="4" cols="50" name="event_discription" placeholder="Event Discription">{{eid.event_discription}}</textarea>                            </div>
+                        </div>
+                        
+                    </div>
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                            <a href="{% url 'edit-event' %}" class="btn btn-default btn-round btn-simple"> Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+            </div>
+        
+</section>
+{% endblock %}

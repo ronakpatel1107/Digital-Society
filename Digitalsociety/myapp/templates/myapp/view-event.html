@@ -1,0 +1,104 @@
+﻿{% extends 'myapp/index.html' %}
+{% block content %}       
+
+{% if uid.role == "Chairman" %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Detail <small class="text-muted">Welcome to DigitalSociety</small></h2>
+            </div>            
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                
+                
+                
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                    <li class="breadcrumb-item">Events</li>
+                                                    <li class="breadcrumb-item active">View Events</li>
+                                            </ul>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid">                
+    <div class="blog-page">
+    <div class="row">
+        {% for i in all_event %}
+        <div class="col-lg-12 col-md-12">
+            <div class="card single_post">
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html" style="color:black"><b>{{i.event_title}}</b></a></h3>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-account col-blue"></i><i> Posted By: {{uid.role}}</i></a>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-comment-text col-blue"></i> Event Date: {{i.event_date}} </a></li>
+                </div>                    
+                <div class="body">
+                    <div class="img-post m-b-15">
+                        
+                        <img src="{{i.event_pic.url}}" alt="Awesome Image">
+        
+                    </div>
+                    <p>{{i.event_discription}}</p>
+                    <a href="{% url 'edit-event' ek=i.id %}" title="read more" class="btn btn-primary btn-round">Edit</a> 
+                    <a href="{% url 'delete-event' ek=i.id %}" title="read more" class="btn btn-default btn-round btn-simple">Delete</a>
+                    <a href="{% url 'view-event' %}" title="read more" class="btn btn-default btn-round btn-simple">Cancel</a>                          
+                </div>
+            </div>
+
+        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</section>
+{% else %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Detail <small class="text-muted">Welcome to DigitalSociety</small></h2>
+            </div>            
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                
+                
+                
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Home </a></li>
+                                                    <li class="breadcrumb-item">Events</li>
+                                                   
+                                            </ul>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid">                
+    <div class="blog-page">
+    <div class="row">
+        {% for i in all_event %}
+        <div class="col-lg-12 col-md-12">
+            <div class="card single_post">
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html" style="color:black"><b>{{i.event_title}}</b></a></h3>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-account col-blue"></i><i> Posted By: {{uid.role}}</i></a>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-comment-text col-blue"></i> Event Date: {{i.event_date}} </a></li>
+                </div>                    
+                <div class="body">
+                    <div class="img-post m-b-15">
+                        
+                        <img src="{{i.event_pic.url}}" alt="Awesome Image">
+        
+                    </div>
+                    <p>{{i.event_discription}}</p>
+                                  
+                </div>
+            </div>
+
+        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</section>
+{% endif %}
+        
+{% endblock %}              

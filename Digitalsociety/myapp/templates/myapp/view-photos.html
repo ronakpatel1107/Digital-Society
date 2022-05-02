@@ -1,0 +1,126 @@
+﻿
+
+{% extends 'myapp\index.html' %}
+{% block content %}  
+{% if uid.role == "Chairman" %} 
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Photos <small class="text-muted">Welcome to DigitalSociety</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                         <li class="breadcrumb-item">Photos</li>
+                                         <li class="breadcrumb-item active">View Photos</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+<div class="file_manager">                
+    <div class="row clearfix">
+        <div class="col-lg-12">
+         
+            <div class="tab-content">
+                <div class="tab-pane active" id="2017">
+                    <div class="row clearfix">
+                        {% for i in all_photos %}
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <div class="card">
+                                <div class="file">
+                                    <a href="{% url 'delete-photos' pk=i.id %}">
+                                        <div class="hover">
+                                            <button type="submit" class="btn btn-icon btn-icon-mini btn-round btn-danger">
+                                                <i  class="zmdi zmdi-delete"></i>
+                                                
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="icon">
+                                            <img src="{{i.c_pic.url}}" alt="Awesome Image">
+                                        </div>
+                                        <div class="file-name">
+                                            <p class="m-b-5 text-muted">{{i.pic_name}}</p>
+                                            <small>{{i.created_at}}<span class="date text-muted"></span></small>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+                </div>
+                                  
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+{% else %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Photos <small class="text-muted">Welcome to DigitalSociety</small></h2>
+            </div>            
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                
+                
+                
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                 <li class="breadcrumb-item">Media</li>
+                                 <li class="breadcrumb-item active">View Photos</li>
+                                            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">                
+        
+<div class="file_manager">                
+<div class="row clearfix">
+<div class="col-lg-12">
+ 
+    <div class="tab-content">
+        <div class="tab-pane active" id="2017">
+            <div class="row clearfix">
+                {% for i in all_photos %}
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="{% url 'delete-photos' pk=i.id %}">    
+                                <div class="icon">
+                                    <img src="{{i.c_pic.url}}" alt="Awesome Image">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">{{i.pic_name}}</p>
+                                    <small>{{i.created_at}}<span class="date text-muted"></span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+        </div>
+                          
+    </div>
+    
+</div>
+</div>
+</div>
+
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+ 

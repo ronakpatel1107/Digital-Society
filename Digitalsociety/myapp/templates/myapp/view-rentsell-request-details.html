@@ -1,0 +1,115 @@
+﻿
+
+{% extends 'myapp/index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Details <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                     <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                        <a href="#"> <i class="zmdi zmdi-edit"></i></a>
+                            </button>
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'view-rentsell-all-request' %}"></i> Back</a></li>
+                                                        
+                                                            <li class="breadcrumb-item active"> Details</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix profile-page">
+        <div class="col-lg-4 col-md-12">
+            <div class="card profile-header">
+                <div class="body text-center">
+                    <div class="profile-image"> <img src="{{mid.pic.url}}" alt=""> </div>
+                </div>                    
+            </div>                               
+           
+                           
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">Full Details</a></li>
+                                            
+                </ul>
+                {% if mid.homevehicle_type == "house" %}
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><strong>Owner Name:</strong> {{mid.member_id}}</p>
+                            </li>
+                            <li>
+                                <p><strong>House on Rent/Sell</strong>:</strong> {{mid.homevehicle_rentsell}}</p>
+                            </li>
+                            <li>
+                                <p><strong>House Details:</strong> {{mid.homevehicle_discription}}</p>
+                            </li>
+                            <li>
+                                <p><strong>House Addrress:</strong> {{mid.homevehicle_address_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Expected Budget: </strong> {{mid.homevehicle_budget}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Owner Contact No:</strong> {{mid.homevehicle_contactno}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Preowned:</strong> {{mid.homevehicle_preowned}} Years</p>
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                    </div>  
+                {% elif mid.homevehicle_type == "vehicle" %}
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><strong>Owner Name:</strong> {{mid.member_id}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Rent/Sell</strong>:</strong> {{mid.homevehicle_rentsell}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Details:</strong> {{mid.homevehicle_discription}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Addrress:</strong> {{mid.homevehicle_address_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Expected Budget: </strong> {{mid.homevehicle_budget}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Owner Contact No:</strong> {{mid.homevehicle_contactno}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Preowned:</strong> {{mid.homevehicle_preowned}} Years</p>
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                    </div>  
+                {% endif %}
+            </div>
+                       
+        </div>
+    </div>
+
+            </div>
+</section>
+{% endblock %}
+ 

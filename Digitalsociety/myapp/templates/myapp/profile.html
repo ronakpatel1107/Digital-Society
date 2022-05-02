@@ -1,0 +1,256 @@
+﻿
+
+{% extends 'myapp/index.html' %}
+{% block content %}
+{% if uid.role == "Chairman" or uid.role == "Member" %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Profile <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                     <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                                <i class="zmdi zmdi-edit"></i>
+                            </button>
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                        
+                                                                                        <li class="breadcrumb-item active">Profile</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+<div class="container-fluid">                
+    <div class="row clearfix profile-page">
+        <div class="col-lg-4 col-md-12">
+            <div class="card profile-header">
+                <div class="body text-center">
+                    <div class="profile-image"> <img src="{{cid.pic.url}}" alt=""> </div>
+                    <div>
+                        <h4 class="m-b-0"><strong>{{cid.name}}</strong></h4>
+                        <span class="job_post">{{uid.role}}</span>
+                        <p>{{uid.email}}</p>
+                        <u><a href="{% url 'change-password' %}">Change Password</a></u>
+                    </div>
+                   
+                    <p class="social-icon m-t-5 m-b-0">
+                        
+                        <a title="Facebook" href="javascript:void(0);"><i class="zmdi zmdi-facebook"></i></a>
+                        <a title="Instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram "></i></a>
+                    </p>
+                </div>                    
+            </div>                               
+           
+                           
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">My Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Account">Update Profile</a></li>                        
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><strong>Full Name:</strong> {{cid.name}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Email:</strong> {{uid.email}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Contact Number:</strong> {{cid.contact_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>House Number:</strong> {{cid.house_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Address:</strong> {{cid.full_address}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Type:</strong> {{cid.vehicle_type}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle Number:</strong> {{cid.vehicle_details}}</p>
+                            </li>
+                           
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="tab-pane body" id="Account">
+                        <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" value="{{cid.name}}" name="name" placeholder="Full name">
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" value="{{uid.email}}" name="email" placeholder="Email ID">
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="text"d class="form-control" value="{{cid.contact_no}}" name="contact_no" placeholder="Contact No">
+                        </div>
+                        <div class="form-group">
+                            
+                            <input type="text" class="form-control" value="{{cid.house_no}}" name="house_no" placeholder="House No">
+                        </div>
+                        <div class="form-group">
+                
+                            <input type="text" class="form-control" value="{{cid.vehicle_type}}" name="vehicle_type" placeholder="Vehicle Type">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="{{cid.vehicle_details}}" name="vehicle_details" placeholder="Vehicle Details">
+                        </div>
+                        <div class="form-group">
+                            <input id="image" class="form-control" type="file" value="{{cid.pic}}" name="pic" placeholder="Add Profile Image">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group m-b-10">
+                                <textarea rows="4" class="form-control no-resize"  name="full_address" placeholder="Address">{{cid.full_address}}</textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-info btn-round">Save Changes</button>
+                        </form>
+                        </div>
+
+                    </div>                        
+                </div>
+            </div>
+                       
+        </div>
+    </div>
+
+            </div>
+</section>
+{% elif uid.role == "watchman" %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Profile <small class="text-muted">Welcome to Digital Society</small></h2>
+            </div>            
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                
+                
+             <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                        <i class="zmdi zmdi-edit"></i>
+                    </button>
+                
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                
+                                                                                <li class="breadcrumb-item active">Profile</li>
+                                            </ul>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid">                
+<div class="row clearfix profile-page">
+<div class="col-lg-4 col-md-12">
+    <div class="card profile-header">
+        <div class="body text-center">
+            <div class="profile-image"> <img src="{{cid.pic.url}}" alt=""> </div>
+            <div>
+                <h4 class="m-b-0"><strong>{{cid.name}}</strong></h4>
+                <span class="job_post">{{uid.role}}</span>
+                <p>{{uid.email}}</p>
+                <u><a href="{% url 'change-password' %}">Change Password</a></u>
+            </div>
+           
+            <p class="social-icon m-t-5 m-b-0">
+                
+                <a title="Facebook" href="javascript:void(0);"><i class="zmdi zmdi-facebook"></i></a>
+                <a title="Instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram "></i></a>
+            </p>
+        </div>                    
+    </div>                               
+   
+                   
+</div>
+<div class="col-lg-8 col-md-12">
+    <div class="card">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">My Profile</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Account">Update Profile</a></li>                        
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane body active" id="about">
+                
+                <ul class="list-unstyled">
+                    <li>
+                        <p><strong>Full Name:</strong> {{cid.name}}</p>
+                    </li>
+                    <li>
+                        <p><strong>Email:</strong> {{uid.email}}</p>
+                    </li>
+                    <li>
+                        <p><strong>Contact Number:</strong> {{cid.contact_no}}</p>
+                    </li>
+                    <li>
+                        <p><strong>Age:</strong> {{cid.age}}</p>
+                    </li>
+                    <li>
+                        <p><strong>Address:</strong> {{cid.full_address}}</p>
+                    </li>
+                    
+                   
+                </ul>
+                
+                
+            </div>
+            
+            <div class="tab-pane body" id="Account">
+                <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" value="{{cid.name}}" name="name" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" value="{{uid.email}}" name="email" placeholder="Email ID">
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text"d class="form-control" value="{{cid.contact_no}}" name="contact_no" placeholder="Contact No">
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" value="{{cid.age}}" name="age" placeholder="Age">
+                </div>
+               
+                <div class="form-group">
+                    <input id="image" class="form-control" type="file" value="{{cid.pic}}" name="pic" placeholder="Add Profile Image">
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group m-b-10">
+                        <textarea rows="4" class="form-control no-resize"  name="full_address" placeholder="Address">{{cid.full_address}}</textarea>
+                    </div>
+                </div>
+                
+                <button class="btn btn-info btn-round">Save Changes</button>
+                </form>
+                </div>
+
+            </div>                        
+        </div>
+    </div>
+               
+</div>
+</div>
+
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+ 

@@ -1,0 +1,111 @@
+﻿
+{% extends 'myapp\index.html' %}
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Add Request <small class="text-muted">Welcome to DigitalSociety</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                                                    <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                                <i class="zmdi zmdi-plus"></i>
+                            </button>
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i>Home</a></li>
+                                                            <li class="breadcrumb-item">Rent/sell Request</li>
+                                                            <li class="breadcrumb-item active">Add Request</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="body">
+                    <form action="{% url 'add-rentsell-request' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control"  name="homevehicle_title" placeholder="Request Title" required>
+                            </div>
+                        </div>
+        
+                    
+                       
+                    </div>
+                    <div class="row clearfix">                            
+            
+                        <div class="col-sm-3">
+                            <select class="form-control" name="homevehicle_rentsell" id="homevehicle_rentsell">
+                                <option value="rent">Rent</option>
+                                <option value="sell">Sell</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                        <select class="form-control" name="homevehicle_type" id="homevehicle_type">
+                            <option value="house">House</option>
+                            <option value="vehicle">Vehicle</option>
+                        </select>
+                        </div>                            
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="homevehicle_contactno" placeholder="Contact No" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="homevehicle_budget" placeholder="Budget" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="homevehicle_preowned" placeholder="How old (In years)" required>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="homevehicle_address_no" placeholder="House address/ Vehicle Number" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>Discriptions</h6>
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" rows="4" cols="50" name=" homevehicle_discription" placeholder="House/Vehicle Discription" required></textarea>                            </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h6>Discriptions</h6>
+                            <div class="form-group">
+                                <input id="image" class="form-control" type="file"  name="pic" placeholder="Upload Photo" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">                            
+                        
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                            <a href="{% url 'add-rentsell-request' %}" class="btn btn-default btn-round btn-simple"> Cancel</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+            </div>
+    </section>
+    {% endblock %}

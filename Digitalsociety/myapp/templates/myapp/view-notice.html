@@ -1,0 +1,95 @@
+﻿{% extends 'myapp/index.html' %}
+{% block content %}   
+{% if uid.role == "Chairman" %}    
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Detail <small class="text-muted">Welcome to DigitalSociety</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                            <li class="breadcrumb-item">Notice</li>
+                                                            <li class="breadcrumb-item active">View Notice</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+<div class="container-fluid">                
+    <div class="blog-page">
+    <div class="row">
+        {% for i in all_notice %}
+        <div class="col-lg-12 col-md-12">
+            <div class="card single_post">
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html" style="color:black"><b>{{i.notice_title}}</b></a></h3>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-account col-blue"></i><i> Posted By: {{uid.role}}</i></a>
+                    <a href="#" style="color:black"><i class="zmdi zmdi-comment-text col-blue"></i> Notice Date: {{i.notice_date}} </a></li>
+                </div>                    
+                <div class="body">
+    
+                    <p>{{i.notice_discription}}</p>
+                
+                    <a href="{% url 'delete-notice' nk=i.id %}" title="read more" class="btn btn-primary btn-round">Delete</a>
+                    <a href="{% url 'view-notice' %}" title="read more" class="btn btn-default btn-round btn-simple">Cancel</a>                          
+                </div>
+            </div>
+
+        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+            </div>
+</section>
+{% else %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Detail <small class="text-muted">Welcome to DigitalSociety</small></h2>
+            </div>            
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                
+                
+                
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                    <li class="breadcrumb-item">Notice</li>
+      
+                                            </ul>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid">                
+<div class="blog-page">
+<div class="row">
+{% for i in all_notice %}
+<div class="col-lg-12 col-md-12">
+    <div class="card single_post">
+        <div class="body">
+            <h3 class="m-t-0 m-b-5"><a href="blog-details.html" style="color:black"><b>{{i.notice_title}}</b></a></h3>
+            <a href="#" style="color:black"><i class="zmdi zmdi-account col-blue"></i><i> Posted By: {{uid.role}}</i></a>
+            <a href="#" style="color:black"><i class="zmdi zmdi-comment-text col-blue"></i> Notice Date: {{i.notice_date}} </a></li>
+        </div>                    
+        <div class="body">
+
+            <p>{{i.notice_discription}}</p>
+        
+            
+        </div>
+    </div>
+
+
+</div>
+{% endfor %}
+</div>
+</div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}              
